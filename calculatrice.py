@@ -1,27 +1,33 @@
-while True:
-    entree_a = input("Premier nombre ou q pour quitter : ")
+def demander_nombre(message):
+    while True:
+        valeur = input(message)
 
-    if entree_a == "q":
+        try:
+            return float(valeur)
+        except ValueError:
+            print("Erreur : tu dois entrer un nombre.")
+
+
+def afficher_resultats(a, b):
+    print("Somme :", a + b)
+    print("Différence :", a - b)
+    print("Produit :", a * b)
+
+    if b != 0:
+        print("Division :", a / b)
+    else:
+        print("Division impossible par zéro.")
+
+
+while True:
+    choix = input("Appuie sur Entrée pour calculer ou tape q pour quitter : ")
+
+    if choix == "q":
         print("Fin du programme.")
         break
 
-    entree_b = input("Deuxième nombre : ")
+    nombre_1 = demander_nombre("Premier nombre : ")
+    nombre_2 = demander_nombre("Deuxième nombre : ")
 
-    try:
-        a = float(entree_a)
-        b = float(entree_b)
-
-        print("Somme :", a + b)
-        print("Différence :", a - b)
-        print("Produit :", a * b)
-
-        if b != 0:
-            print("Division :", a / b)
-        else:
-            print("Division impossible par zéro.")
-
-        print("---")
-
-    except ValueError:
-        print("Erreur : tu dois entrer des nombres.")
-        print("---")
+    afficher_resultats(nombre_1, nombre_2)
+    print("---")
